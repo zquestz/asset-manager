@@ -30,7 +30,11 @@ Rails::Initializer.run do |config|
   config.gem 'mbleigh-acts-as-taggable-on', :lib => 'acts-as-taggable-on'
   config.gem 'RedCloth',                    :lib => 'redcloth'
   config.gem 'mislav-will_paginate',        :lib => 'will_paginate'
-  config.gem 'rmagick',                     :lib => 'RMagick'
+  if defined?(JRUBY_VERSION)
+    config.gem 'rmagick4j',                 :lib => 'RMagick'
+  else
+    config.gem 'rmagick',                   :lib => 'RMagick'
+  end
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
